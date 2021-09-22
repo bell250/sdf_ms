@@ -1,7 +1,7 @@
 table 
 {
 	border-collapse: collapse;
-	width: 100%;
+	width: auto;
 	text-align: left;
 	
 }
@@ -13,22 +13,22 @@ th{
 td{
 	padding:auto;
 }
-tr:hover
+/*tr:hover
 {
 	background-color:grey;
 	border-color: black;
 
 }
-
+*/
 tr:nth-child(even) 
 {
 	background-color:#dddddd;
 
 
 }
-tr:nth-child(even):hover
+/*tr:nth-child(even):hover
 {
 	background-color: grey;
 	border-color: black;
 	
-}
+}*/

@@ -31,18 +31,19 @@ if (isset($_POST['submit'])) {
 	  '$last_name','$gender','$date_of_birth', '$highest_academic_level',
 	   '$province', '$district', '$sector', '$cell', '$email', '$password',
 	    '$learning_option_id')";
-
+ 
 	// 5. Execute the query like this: 
+
 	if (mysqli_query($connection, $query) === true) {
+		// $last_id= mysqli_insert_id($connection);
 		echo "Your application has been submitted! You will be informed of the feedback 
         of your application not later than September 15, 2021.";
+		// header("location:show_applicant.php/?applicant_id=$last_id");
 	} else {
 		echo "ERROR: There was a problem" . mysqli_error($connection);
 	}
 	
 	// Close connection
 	mysqli_close($connection);
-	// ================
 }
-
 ?>

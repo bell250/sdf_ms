@@ -9,7 +9,7 @@
 <body class="container">
  
 	<p>Welcome to IPRC Ngoma SDF Program</p>
-	<p> SDF is a program implemented by IPRC Ngoma to upskill the youth in IT related field If you want to register a new cooperative, 
+	<p> SDF is a program implemented by IPRC Ngoma to upskill the youth in IT related field If you want to apply fill this form. 
 		<!-- <a href="#">  click here.</a>  -->
 	</p>
 
@@ -18,7 +18,7 @@
 
 		<p> Fill this form to apply: </p>
 <div class="container">
-		<form name="new_applicant_form" action="registration.php" method="post">
+		<form name="new_applicant_form" action="applicant_controller.php" method="post">
 		<label class="form-label"> First name:</label> <input type="text" name="izina" class="form-control">
 		<label class="form-label"> Last name:</label><input type="text" name="last_name" class="form-control">
 			 <label class="form-label">Gender: </label><br>
@@ -40,15 +40,22 @@
 			<label class="form-label"> Cell:  </label>   <input type="text" name="cell" class="form-control">
 			 <label class="form-label">Email: </label>   <input type="email" name="email" class="form-control">
 			 <label class="form-label">Password:</label> <input type="password" name="password" class="form-control">
-			 Learning Option: 
-				<input class="form-check-input" type="radio" id="iot" name="learning_option_id" value="1">
-				<label for="iot">IOT</label><br>
-				<input class="form-check-input" type="radio" id="sod" name="learning_option_id" value="2">
-				<label for="sod">Software Development</label><br>
-				<input class="form-check-input" type="radio" id="civil_engineering" name="learning_option_id" value="3">
-				<label for="civil_engineering">Civil Engineering</label><br>
+			 <?php
+              $conn = new mysqli("localhost", "root","","sdf_database") or die ('Cannot connect to db');
+                  $result = $conn->query("select id,name from learning_options");
+                 echo "<p><label>Learning option:</label></p>";
+                 echo "<select name='learning_option_id' class='form-select'>";
+                 while ($row = $result->fetch_assoc()) {
+                 $id = $row['id'];
+                 $name = $row['name'];
+                 echo '<option value=" '.$id.'"  >'.$name.'</option>';
+                             }
+                  echo "</select>";
+     
+                         ?> 
 			
-			<input  type="submit" name="submit" value="Submit" class="btn btn-primary">
+			
+			<br><input  type="submit" name="submit" value="Submit" class="btn btn-primary">
 		</form>
 	</div>
 </body>

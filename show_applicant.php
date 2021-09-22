@@ -18,11 +18,12 @@ if($link === false){
 }
  
 // Attempt select query execution
-$sql = "SELECT * FROM applicants";
+// $last_id=$_REQUEST['applicant_id'];
+$sql = "SELECT * FROM applicants ";
 if($result = mysqli_query($link, $sql)){
     if(mysqli_num_rows($result) > 0){
         echo "<table border=1>";
-        echo "<h3>List of Applicants</h3";
+        echo "<h3> Applicant information</h3";
             echo "<tr>";
                 
                 echo "<th>FIRST NAME</th>";
@@ -39,6 +40,8 @@ if($result = mysqli_query($link, $sql)){
                 echo "<th>CELL</th>";
                 echo "<th>COURSE APPLIED FOR</th>";
                 echo "<th>Reg No</th>";
+                echo "<th>Action</th>";
+                echo "<th>Action</th>";
             echo "</tr>";
         while($row = mysqli_fetch_array($result)){
             echo "<tr>";
@@ -55,7 +58,10 @@ if($result = mysqli_query($link, $sql)){
                 echo "<td>" . $row['sector'] . "</td>";
                 echo "<td>" . $row['cell'] . "</td>";
                 echo "<td>" . $row['course'] . "</td>";
-                echo "<td>" . $row['reg_no'] . "</td>";
+                echo "<td>" . $row['reg_no'] . "</td>";?>
+                <td><a href="delete_applicant.php?id=<?php echo $row['id']; ?>"">delete</a></td>
+            
+            <?php
             echo "</tr>";
         }
         echo "</table>";
